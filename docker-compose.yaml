@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  springboot-chatbot:
+    build: 
+      context: ./spring-boot-ai-chatbot
+      dockerfile: Dockerfile
+    image: springboot-chatbot:latest
+    container_name: springboot-chatbot
+    hostname: springboot-chatbot
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: "curl --fail --silent http://localhost:8080/actuator/health | grep -q '\"status\":\"UP\"' || exit 1"
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 5s
+    environment:
+      - SPRING_AI_OPENAI_API_KEY=${OPENAI_API_KEY}
+    networks:
+      - app-network
+
+  react-ui:
+    build: 
+      context: ./chatbot-ui
+      dockerfile: Dockerfile
+    image: react-ui:latest
+    container_name: react-ui
+    hostname: react-ui
+    ports:
+      - "3000:80" # Serving on port 3000 (Nginx default port 80)
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 5s
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
