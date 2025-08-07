@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a full-stack web application built with Spring Boot, Spring AI, React, and Docker. It serves as a learning tool for developers who want to get hands-on experience with Spring AI, leveraging the OpenAI API to create an intelligent chatbot. The chatbot can assist users in learning more about Spring AI by answering questions and providing information based on user queries. You are going to add code to this project to include support for chat session, using Redis as the persistent store.
+This project is a full-stack web application built with Spring Boot, Spring AI, React, and Docker. It serves as a learning tool for developers who want to get hands-on experience with Spring AI, leveraging the OpenAI API to create an intelligent chatbot. The chatbot can assist users in learning more about Spring AI by answering questions and providing information based on user queries. This project includes support for chat session, using Redis as the persistent store.
 
 ![Redis](./redis-logo.png)
 
@@ -21,7 +21,7 @@ Here’s a quick demo of how the project works:
 
 ![Project Screenshot](./chatbot-ui-screenshot.png)
 
-This project doesn't contain support for chat session. This means, every interaction with the chatbot is stateless, and the chatbot does not remember previous messages or context. You are going to add code to this project to include support for chat session, using Redis as the persistent store. The behavior you want to achieve is that the chatbot will remember the previous messages in the chat session, allowing for a more coherent conversation flow.
+This project demonstrates support for chat session, using Redis as the persistent store. The chatbot remembers the previous messages in the chat session, allowing for a more coherent conversation flow.
 
 ## Tech Stack
 
@@ -30,6 +30,7 @@ This project doesn't contain support for chat session. This means, every interac
   - Spring Boot
   - Spring AI
   - OpenAI API
+  - Redis
 - **Frontend**:
   - React
   - HTML5 & CSS3
